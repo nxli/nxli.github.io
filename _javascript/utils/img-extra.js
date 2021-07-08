@@ -11,10 +11,10 @@ $(function() {
     return;
   }
 
-  /* lozy loading */
+  /* lazy loading */
 
-  const imgs = document.querySelectorAll(`${IMG_SCOPE} img[data-src]`);
-  const observer = lozad(imgs);
+  const imgList = document.querySelectorAll(`${IMG_SCOPE} img[data-src]`);
+  const observer = lozad(imgList);
   observer.observe();
 
   /* popup */
@@ -25,7 +25,7 @@ $(function() {
       const title = nextTag.prop('tagName') === 'EM' ? nextTag.text() : '';
       const src = $(this).attr('data-src'); // created by lozad.js
 
-      $(this).wrap(`<a href="${src}" title="${title}" class="popup"></a>`);
+      $(this).wrap(`<a href="${src}" title="${title}" class="popup img-link"></a>`);
     }
   );
 
@@ -40,9 +40,6 @@ $(function() {
     }
   });
 
-
   /* markup the image links */
-  $(`${IMG_SCOPE} a`).has("img").addClass('img-link');
 
 });
-
